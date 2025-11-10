@@ -23,3 +23,4 @@ export function usePosts(params: GetPostsParams = {}) {
     refetchOnWindowFocus: false,
   });
 }
+

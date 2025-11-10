@@ -1,12 +1,5 @@
-/**
- * Generic API client for handling HTTP requests
- * Provides error handling, timeout, and query parameter support
- */
-
-// Default timeout in milliseconds
 const DEFAULT_TIMEOUT = 10000;
 
-// Custom error class for API errors
 export class ApiError extends Error {
   constructor(
     message: string,
@@ -18,13 +11,6 @@ export class ApiError extends Error {
   }
 }
 
-/**
- * Generic API call function with error handling and timeout
- * @param endpoint - API endpoint (relative or absolute URL)
- * @param params - Optional query parameters
- * @param options - Optional fetch options (method, headers, body, etc.)
- * @returns Promise with typed response data
- */
 export async function apiCall<T>(
   endpoint: string,
   params?: Record<string, any>,

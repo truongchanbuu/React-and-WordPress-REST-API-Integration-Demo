@@ -1,15 +1,9 @@
-/**
- * Main App component
- * Sets up React Router and application structure
- */
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
+import { HomePage } from "./pages/HomePage";
+import { PostDetail } from "./pages/PostDetail";
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { HelmetProvider } from 'react-helmet-async';
-import { HomePage } from './pages/HomePage';
-import { PostDetail } from './pages/PostDetail';
-
-// Create a React Query client with default options
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -21,10 +15,12 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  const basename = import.meta.env.BASE_URL;
+
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
           <div className="min-h-screen bg-gray-50">
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -38,4 +34,3 @@ function App() {
 }
 
 export default App;
-
